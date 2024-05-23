@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    flex-direction: column;
+}
+
+.container {
+    text-align: center;
+}
+
+#hangman-container {
+    position: relative;
+    height: 200px;
+    width: 100px;
+    margin: 20px auto;
+}
+
+.hangman-part {
+    display: none;
+    position: absolute;
+    background-color: #000;
+}
+
+.head {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 10px;
+    left: 30px;
+}
+
+.body {
+    width: 10px;
+    height: 80px;
+    top: 50px;
+    left: 45px;
+}
+
+.left-arm {
+    width: 10px;
+    height: 50px;
+    top: 50px;
+    left: 45px;
+    transform: rotate(-45deg);
+    transform-origin: right bottom;
+}
+
+.right-arm {
+    width: 10px;
+    height: 50px;
+    top: 50px;
+    left: 45px;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
+}
+
+.left-leg {
+    width: 10px;
+    height: 50px;
+    top: 120px;
+    left: 45px;
+    transform: rotate(45deg);
+    transform-origin: left top;
+}
+
+.right-leg {
+    width: 10px;
+    height: 50px;
+    top: 120px;
+    left: 45px;
+    transform: rotate(-45deg);
+    transform-origin: right top;
+}
+
+#word {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#letters {
+    margin-bottom: 20px;
+}
+
+#message {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ddd;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px; 
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+button[disabled] {
+    text-decoration: line-through;
+    color: grey;
+    cursor: not-allowed;
+}
+
+.correct {
+    background-color: green;
+    color: white;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}
+
+#message-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#message {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#play-again-container {
+    display: none;
+}
+
+#play-again {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+#play-again:hover {
+    background-color: #45a049;
+}
