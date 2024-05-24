@@ -10,7 +10,7 @@ function startGame() {
     guessedLetters = [];
 
     document.getElementById("message").textContent = "";
-    document.getElementById("play-again").style.display = "none";
+    document.getElementById("play-again-container").style.display = "none";
 
     document.querySelectorAll(".hangman-part").forEach(part => part.style.display = "none");
 
@@ -72,11 +72,11 @@ function showHangmanPart() {
 function checkGameStatus() {
     if (attempts === maxAttempts) {
         document.getElementById("message").textContent = `Game Over! The word was: ${selectedWord}`;
-        document.getElementById("play-again").style.display = "block";
+        document.getElementById("play-again-container").style.display = "block";
         disableKeyboard();
     } else if (selectedWord.split("").every(letter => guessedLetters.includes(letter))) {
         document.getElementById("message").textContent = "Congratulations! You've guessed the word!";
-        document.getElementById("play-again").style.display = "block";
+        document.getElementById("play-again-container").style.display = "block";
         disableKeyboard();
     }
 }

@@ -88,7 +88,7 @@ body {
 
 #message {
     font-size: 1.2em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -127,15 +127,13 @@ button[disabled] {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#message {
-    margin-bottom: 10px;
-    font-size: 18px;
+    width: 100%;
+    text-align: center;
 }
 
 #play-again-container {
     display: none;
+    margin-top: 10px;
 }
 
 #play-again {
@@ -145,7 +143,7 @@ button[disabled] {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 #play-again:hover {
