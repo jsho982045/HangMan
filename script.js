@@ -1,8 +1,11 @@
-const words = ["javascript", "hangman", "coding", "programming", "developer"];
+const words = ["javascript", "hangman", "coding", "programming", "developer", "chippy", "danica", "venice", "vianca", "vinerva", "vanessa", "vienna", "veronica", ];
 let selectedWord;
 let attempts;
 let guessedLetters;
 const maxAttempts = 6;
+
+const correctSound = new Audio('mixkit-correct-answer-tone-2870.wav');
+const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-02.mp3');
 
 function startGame() {
     selectedWord = words[Math.floor(Math.random() * words.length)];
@@ -53,9 +56,11 @@ function guessLetter(letter) {
     if (!selectedWord.includes(letter)) {
         attempts++;
         letterButton.classList.add("incorrect");
+        incorrectSound.play(); // Play incorrect sound
         showHangmanPart();
     } else {
         letterButton.classList.add("correct");
+        correctSound.play(); // Play correct sound
     }
     letterButton.disabled = true;
     displayWord();
