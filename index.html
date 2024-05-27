@@ -8,12 +8,26 @@
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 </head>
 <body>
-    <div id="mode-selection" class="container">
+    <div id="home-page" class="container">
+        <div id="title-container">
+            <h1 id="title" class="title-font"></h1>
+            <div id="animation-container">
+                <div class="hangman-part head"></div>
+                <div class="hangman-part body"></div>
+                <div class="hangman-part left-arm"></div>
+                <div class="hangman-part right-arm"></div>
+                <div class="hangman-part left-leg"></div>
+                <div class="hangman-part right-leg"></div>
+            </div>
+        </div>
+        <button id="play-now" style="display:none;">Play Now</button>
+    </div>
+    <div id="mode-selection" class="container" style="display:none;">
         <h1>Select Mode</h1>
         <div id="difficulty-container">
-            <button class="mode-button" data-tooltip="Easy mode contains words with letters ranging from 3-5 in length" onclick="setDifficulty('easy')">Easy</button>
-            <button class="mode-button" data-tooltip="Medium mode contains words with letters ranging from 6-8 in length" onclick="setDifficulty('medium')">Medium</button>
-            <button class="mode-button" data-tooltip="Hard mode contains words with letters ranging from 9-12 in length" onclick="setDifficulty('hard')">Hard</button>
+            <button id="easy-button" onclick="setDifficulty('easy')">Easy</button>
+            <button id="medium-button" onclick="setDifficulty('medium')">Medium</button>
+            <button id="hard-button" onclick="setDifficulty('hard')">Hard</button>
         </div>
     </div>
     <div id="game-container" class="container" style="display:none;">

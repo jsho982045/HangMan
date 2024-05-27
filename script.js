@@ -203,6 +203,93 @@ document.getElementById("switch-mode").addEventListener("click", () => {
 });
 
 window.onload = () => {
-    document.getElementById("mode-selection").style.display = "block";
+    document.getElementById("home-page").style.display = "block";
+    document.getElementById("mode-selection").style.display = "none";
     document.getElementById("game-container").style.display = "none";
 };
+
+// Title Animation and Navigation to Mode Selection
+document.addEventListener("DOMContentLoaded", () => {
+    const titleElement = document.getElementById("title");
+    const playNowButton = document.getElementById("play-now");
+    const animationContainer = document.getElementById("animation-container");
+
+    // Function to animate the drawing of the title
+    function animateTitle() {
+        let text = "Hangman";
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < text.length) {
+                titleElement.textContent += text.charAt(index);
+                index++;
+            } else {
+                clearInterval(interval);
+                setTimeout(() => {
+                    // Show hangman animation
+                    animationContainer.style.display = "block";
+                    animateHangman();
+                }, 500);
+            }
+        }, 500);
+    }
+
+    // Function to animate the hangman
+    function animateHangman() {
+        const parts = document.querySelectorAll(".hangman-part");
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < parts.length) {
+                parts[index].style.display = "block";
+                index++;
+            } else {
+                clearInterval(interval);
+                playNowButton.style.display = "block";
+            }
+        }, 500);
+    }
+
+    playNowButton.addEventListener("click", () => {
+        document.getElementById("home-page").style.display = "none";
+        document.getElementById("mode-selection").style.display = "block";
+    });
+
+    animateTitle();
+});
+
+// Tooltip for Difficulty Buttons
+document.getElementById('easy-button').addEventListener('mouseover', () => showTooltip('Easy mode: 3-5 letters'));
+document.getElementById('easy-button').addEventListener('mouseout', hideTooltip);
+document.getElementById('medium-button').addEventListener('mouseover', () => showTooltip('Medium mode: 6-8 letters'));
+document.getElementById('medium-button').addEventListener('mouseout', hideTooltip);
+document.getElementById('hard-button').addEventListener('mouseover', () => showTooltip('Hard mode: 9-12 letters'));
+document.getElementById('hard-button').addEventListener('mouseout', hideTooltip);
+
+function showTooltip(text) {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip';
+    tooltip.textContent = text;
+    document.body.appendChild(tooltip);
+
+    function moveTooltip(event) {
+        tooltip.style.left = `${event.pageX + 10}px`;
+        tooltip.style.top = `${event.pageY + 10}px`;
+    }
+
+    document.addEventListener('mousemove', moveTooltip);
+
+    function removeTooltip() {
+        tooltip.remove();
+        document.removeEventListener('mousemove', moveTooltip);
+        document.removeEventListener('mouseout', removeTooltip);
+    }
+
+    document.addEventListener('mouseout', removeTooltip);
+}
+
+function hideTooltip() {
+    const tooltip = document.querySelector('.tooltip');
+    if (tooltip) {
+        tooltip.remove();
+    }
+}
+
