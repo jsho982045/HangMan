@@ -10,7 +10,7 @@ const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-
 let selectedWord;
 let attempts;
 let guessedLetters;
-let maxAttempts;
+const maxAttempts = 6; // Keeping max attempts constant
 let difficulty = 'easy';
 
 const jsConfetti = new JSConfetti();
@@ -50,17 +50,6 @@ async function fetchRandomWord() {
 
 function setDifficulty(level) {
     difficulty = level;
-    switch (level) {
-        case 'easy':
-            maxAttempts = 6;
-            break;
-        case 'medium':
-            maxAttempts = 8;
-            break;
-        case 'hard':
-            maxAttempts = 10;
-            break;
-    }
     document.getElementById("mode-display").textContent = capitalizeFirstLetter(level);
     document.getElementById("mode-selection").style.display = "none";
     document.getElementById("game-container").style.display = "block";
@@ -208,7 +197,6 @@ document.getElementById("play-again").addEventListener("click", () => {
     startGame();
 });
 
-
 document.getElementById("switch-mode").addEventListener("click", () => {
     document.getElementById("game-container").style.display = "none";
     document.getElementById("mode-selection").style.display = "block";
@@ -218,5 +206,3 @@ window.onload = () => {
     document.getElementById("mode-selection").style.display = "block";
     document.getElementById("game-container").style.display = "none";
 };
-
-

@@ -159,6 +159,20 @@ button[disabled] {
     background-color: #45a049;
 }
 
+#switch-mode {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#switch-mode:hover {
+    background-color: #45a049;
+}
+
 #strike-counter {
     display: flex;
     justify-content: center;
@@ -184,14 +198,14 @@ button[disabled] {
 .popup {
     display: none;
     position: fixed;
-    top: 66%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     border: 2px solid #4CAF50;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     z-index: 1000;
 }
@@ -205,4 +219,30 @@ button[disabled] {
 .popup p {
     margin: 10px 0 0;
     font-size: 1.2em;
+}
+
+/* Tooltip Styles */
+.mode-button {
+    position: relative;
+}
+
+.mode-button:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mode-button:hover::after {
+    opacity: 1;
 }
