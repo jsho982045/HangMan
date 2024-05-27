@@ -1,14 +1,31 @@
-const words = ["javascript", "hangman", "coding", "programming", "developer", "chippy", "danica", "venice", "vianca", "vinerva", "vanessa", "vienna", "veronica", ];
+const wordApiUrl = "https://random-word-api.herokuapp.com/word?number=1";
+
+const correctSound = new Audio('mixkit-correct-answer-tone-2870.wav');
+const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-02.mp3');
+
 let selectedWord;
 let attempts;
 let guessedLetters;
 const maxAttempts = 6;
 
-const correctSound = new Audio('mixkit-correct-answer-tone-2870.wav');
-const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-02.mp3');
+async function fetchRandomWord() {
+    try {
+        const response = await fetch(wordApiUrl);
+        const data = await response.json();
+        return data[0];
+    } catch (error) {
+        console.error("Error fetching word:", error);
+        return null;
+    }
+}
 
-function startGame() {
-    selectedWord = words[Math.floor(Math.random() * words.length)];
+async function startGame() {
+    selectedWord = await fetchRandomWord();
+    if (!selectedWord) {
+        document.getElementById("message").textContent = "Failed to fetch word. Please try again.";
+        return;
+    }
+
     attempts = 0;
     guessedLetters = [];
 
@@ -39,7 +56,7 @@ function displayLetters() {
         const letter = String.fromCharCode(i).toLowerCase();
         const button = document.createElement("button");
         button.textContent = letter;
-        button.setAttribute("data-key", letter); // Add data-key attribute
+        button.setAttribute("data-key", letter);
         if (guessedLetters.includes(letter)) {
             button.disabled = true;
             button.classList.add(guessedLetters.includes(letter) && selectedWord.includes(letter) ? 'correct' : 'incorrect');
