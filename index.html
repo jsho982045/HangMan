@@ -8,8 +8,16 @@
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Hangman</h1>
+    <div id="mode-selection" class="container">
+        <h1>Select Mode</h1>
+        <div id="difficulty-container">
+            <button onclick="setDifficulty('easy')">Easy</button>
+            <button onclick="setDifficulty('medium')">Medium</button>
+            <button onclick="setDifficulty('hard')">Hard</button>
+        </div>
+    </div>
+    <div id="game-container" class="container" style="display:none;">
+        <h1>Hangman - <span id="mode-display">Easy</span> Mode</h1>
         <div id="hangman-container">
             <div class="hangman-part head"></div>
             <div class="hangman-part body"></div>
@@ -23,8 +31,9 @@
         <div id="strike-counter"></div>
         <div id="message-container">
             <div id="message"></div>
-            <div id="play-again-container">
+            <div id="play-again-container" style="display:none;">
                 <button id="play-again">Play Again</button>
+                <button id="switch-mode">Switch Modes</button>
             </div>
         </div>
         <div id="congratulations-popup" class="popup">

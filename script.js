@@ -1,4 +1,8 @@
-const wordApiUrl = "https://random-word-api.herokuapp.com/word?number=1";
+const wordApiUrls = {
+    easy: "https://random-word-api.herokuapp.com/word?number=10",
+    medium: "https://random-word-api.herokuapp.com/word?number=10",
+    hard: "https://random-word-api.herokuapp.com/word?number=10"
+};
 
 const correctSound = new Audio('mixkit-correct-answer-tone-2870.wav');
 const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-02.mp3');
@@ -6,19 +10,61 @@ const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-
 let selectedWord;
 let attempts;
 let guessedLetters;
-const maxAttempts = 6;
+let maxAttempts;
+let difficulty = 'easy';
 
 const jsConfetti = new JSConfetti();
 
+function filterWordsByLength(words, minLength, maxLength) {
+    return words.filter(word => word.length >= minLength && word.length <= maxLength);
+}
+
 async function fetchRandomWord() {
     try {
-        const response = await fetch(wordApiUrl);
+        const response = await fetch(wordApiUrls[difficulty]);
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
         const data = await response.json();
-        return data[0];
+        let filteredWords;
+        switch (difficulty) {
+            case 'easy':
+                filteredWords = filterWordsByLength(data, 3, 5);
+                break;
+            case 'medium':
+                filteredWords = filterWordsByLength(data, 6, 8);
+                break;
+            case 'hard':
+                filteredWords = filterWordsByLength(data, 9, 12);
+                break;
+        }
+        if (filteredWords.length === 0) {
+            throw new Error("No words found of the desired length");
+        }
+        return filteredWords[Math.floor(Math.random() * filteredWords.length)];
     } catch (error) {
         console.error("Error fetching word:", error);
         return null;
     }
+}
+
+function setDifficulty(level) {
+    difficulty = level;
+    switch (level) {
+        case 'easy':
+            maxAttempts = 6;
+            break;
+        case 'medium':
+            maxAttempts = 8;
+            break;
+        case 'hard':
+            maxAttempts = 10;
+            break;
+    }
+    document.getElementById("mode-display").textContent = capitalizeFirstLetter(level);
+    document.getElementById("mode-selection").style.display = "none";
+    document.getElementById("game-container").style.display = "block";
+    startGame();
 }
 
 async function startGame() {
@@ -154,6 +200,23 @@ function showCongratulationsPopup() {
     popup.style.display = "block";
 }
 
-document.getElementById("play-again").addEventListener("click", startGame);
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-window.onload = startGame;
+document.getElementById("play-again").addEventListener("click", () => {
+    startGame();
+});
+
+
+document.getElementById("switch-mode").addEventListener("click", () => {
+    document.getElementById("game-container").style.display = "none";
+    document.getElementById("mode-selection").style.display = "block";
+});
+
+window.onload = () => {
+    document.getElementById("mode-selection").style.display = "block";
+    document.getElementById("game-container").style.display = "none";
+};
+
+
