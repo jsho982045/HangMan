@@ -45,6 +45,7 @@ function displayWord() {
     selectedWord.split("").forEach(letter => {
         const span = document.createElement("span");
         span.textContent = guessedLetters.includes(letter) ? letter : "_";
+        span.classList.add("letter");
         wordContainer.appendChild(span);
     });
 }
@@ -121,3 +122,4 @@ function handleKeyboardInput(event) {
 document.getElementById("play-again").addEventListener("click", startGame);
 
 window.onload = startGame;
+
