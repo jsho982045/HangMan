@@ -36,6 +36,7 @@ async function startGame() {
 
     displayWord();
     displayLetters();
+    displayStrikes();
     enableKeyboard();
 }
 
@@ -67,6 +68,19 @@ function displayLetters() {
     }
 }
 
+function displayStrikes() {
+    const strikeContainer = document.getElementById("strike-counter");
+    strikeContainer.innerHTML = "";
+    for (let i = 0; i < maxAttempts; i++) {
+        const box = document.createElement("div");
+        box.classList.add("strike-box");
+        if (i < attempts) {
+            box.innerHTML = '<span class="strike">X</span>';
+        }
+        strikeContainer.appendChild(box);
+    }
+}
+
 function guessLetter(letter) {
     if (guessedLetters.includes(letter)) return; // Prevent multiple guesses of the same letter
     guessedLetters.push(letter);
@@ -76,6 +90,7 @@ function guessLetter(letter) {
         letterButton.classList.add("incorrect");
         incorrectSound.play(); // Play incorrect sound
         showHangmanPart();
+        displayStrikes();
     } else {
         letterButton.classList.add("correct");
         correctSound.play(); // Play correct sound
@@ -122,4 +137,3 @@ function handleKeyboardInput(event) {
 document.getElementById("play-again").addEventListener("click", startGame);
 
 window.onload = startGame;
-
