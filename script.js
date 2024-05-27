@@ -88,11 +88,13 @@ function guessLetter(letter) {
     if (!selectedWord.includes(letter)) {
         attempts++;
         letterButton.classList.add("incorrect");
+        incorrectSound.currentTime = 0;
         incorrectSound.play(); // Play incorrect sound
         showHangmanPart();
         displayStrikes();
     } else {
         letterButton.classList.add("correct");
+        correctSound.currentTime = 0;
         correctSound.play(); // Play correct sound
     }
     letterButton.disabled = true;
