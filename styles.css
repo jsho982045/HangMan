@@ -21,8 +21,8 @@ body {
 
 #animation-container {
     position: absolute;
-    top: 20px;
-    left: 50%;
+    top: 30px;
+    left: 10%;
     transform: translateX(-50%);
     display: none;
 }
@@ -244,4 +244,19 @@ button[disabled] {
     display: none;
     font-size: 14px;
     white-space: nowrap;
+}
+
+#play-now {
+    margin-top: 170px; /* Adjust to position below the animation */
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ddd;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#play-now:hover {
+    background-color: #ccc;
 }
