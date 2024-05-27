@@ -8,6 +8,8 @@ let attempts;
 let guessedLetters;
 const maxAttempts = 6;
 
+const jsConfetti = new JSConfetti();
+
 async function fetchRandomWord() {
     try {
         const response = await fetch(wordApiUrl);
@@ -31,6 +33,7 @@ async function startGame() {
 
     document.getElementById("message").textContent = "";
     document.getElementById("play-again-container").style.display = "none";
+    document.getElementById("congratulations-popup").style.display = "none"; // Hide popup
 
     document.querySelectorAll(".hangman-part").forEach(part => part.style.display = "none");
 
@@ -88,13 +91,13 @@ function guessLetter(letter) {
     if (!selectedWord.includes(letter)) {
         attempts++;
         letterButton.classList.add("incorrect");
-        incorrectSound.currentTime = 0;
+        incorrectSound.currentTime = 0; // Reset the sound to the beginning
         incorrectSound.play(); // Play incorrect sound
         showHangmanPart();
         displayStrikes();
     } else {
         letterButton.classList.add("correct");
-        correctSound.currentTime = 0;
+        correctSound.currentTime = 0; // Reset the sound to the beginning
         correctSound.play(); // Play correct sound
     }
     letterButton.disabled = true;
@@ -117,6 +120,8 @@ function checkGameStatus() {
     } else if (selectedWord.split("").every(letter => guessedLetters.includes(letter))) {
         document.getElementById("message").textContent = "Congratulations! You've guessed the word!";
         document.getElementById("play-again-container").style.display = "block";
+        showConfetti();
+        showCongratulationsPopup();
         disableKeyboard();
     }
 }
@@ -134,6 +139,19 @@ function handleKeyboardInput(event) {
     if (letter >= 'a' && letter <= 'z' && !guessedLetters.includes(letter)) {
         guessLetter(letter);
     }
+}
+
+function showConfetti() {
+    jsConfetti.addConfetti({
+        confettiColors: [
+            '#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff'
+        ],
+    });
+}
+
+function showCongratulationsPopup() {
+    const popup = document.getElementById("congratulations-popup");
+    popup.style.display = "block";
 }
 
 document.getElementById("play-again").addEventListener("click", startGame);

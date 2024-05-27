@@ -180,3 +180,29 @@ button[disabled] {
     color: red;
     font-weight: bold;
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 66%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    z-index: 1000;
+}
+
+.popup h2 {
+    margin: 0;
+    font-size: 2em;
+    color: #4CAF50;
+}
+
+.popup p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
