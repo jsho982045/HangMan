@@ -1,5 +1,18 @@
 {
   "dependencies": {
     "js-confetti": "^0.12.0"
-  }
+  },
+  "name": "hangman",
+  "description": "",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
