@@ -70,7 +70,7 @@ async function startGame() {
     document.getElementById("play-again-container").style.display = "none";
     document.getElementById("congratulations-popup").style.display = "none"; // Hide popup
 
-    document.querySelectorAll(".hangman-part").forEach(part => part.style.display = "none");
+    document.querySelectorAll(".game-hangman-part").forEach(part => part.style.display = "none");
 
     displayWord();
     displayLetters();
@@ -97,6 +97,7 @@ function displayLetters() {
         const button = document.createElement("button");
         button.textContent = letter;
         button.setAttribute("data-key", letter);
+        button.className = 'letter-button';
         if (guessedLetters.includes(letter)) {
             button.disabled = true;
             button.classList.add(guessedLetters.includes(letter) && selectedWord.includes(letter) ? 'correct' : 'incorrect');
@@ -128,7 +129,7 @@ function guessLetter(letter) {
         letterButton.classList.add("incorrect");
         incorrectSound.currentTime = 0; // Reset the sound to the beginning
         incorrectSound.play(); // Play incorrect sound
-        showHangmanPart();
+        showGameHangmanPart(); // Show part of the hangman
         displayStrikes();
     } else {
         letterButton.classList.add("correct");
@@ -140,9 +141,9 @@ function guessLetter(letter) {
     checkGameStatus();
 }
 
-function showHangmanPart() {
-    const parts = document.querySelectorAll(".hangman-part");
+function showGameHangmanPart() {
     if (attempts > 0 && attempts <= maxAttempts) {
+        const parts = document.querySelectorAll(".game-hangman-part");
         parts[attempts - 1].style.display = "block";
     }
 }
@@ -212,7 +213,7 @@ window.onload = () => {
 document.addEventListener("DOMContentLoaded", () => {
     const titleElement = document.getElementById("title");
     const playNowButton = document.getElementById("play-now");
-    const animationContainer = document.getElementById("animation-container");
+    const animationContainer = document.getElementById("home-animation-container");
 
     // Function to animate the drawing of the title
     function animateTitle() {
@@ -227,15 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     // Show hangman animation
                     animationContainer.style.display = "block";
-                    animateHangman();
+                    animateHomeHangman();
                 }, 500);
             }
         }, 500);
     }
 
-    // Function to animate the hangman
-    function animateHangman() {
-        const parts = document.querySelectorAll(".hangman-part");
+    // Function to animate the hangman on the home page
+    function animateHomeHangman() {
+        const parts = document.querySelectorAll(".home-hangman-part");
         let index = 0;
         const interval = setInterval(() => {
             if (index < parts.length) {
@@ -253,16 +254,20 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("mode-selection").style.display = "block";
     });
 
+    document.getElementById('easy-button').addEventListener('click', () => setDifficulty('easy'));
+    document.getElementById('medium-button').addEventListener('click', () => setDifficulty('medium'));
+    document.getElementById('hard-button').addEventListener('click', () => setDifficulty('hard'));
+
     animateTitle();
 });
 
 // Tooltip for Difficulty Buttons
 document.getElementById('easy-button').addEventListener('mouseover', () => showTooltip('Easy mode: 3-5 letters'));
-document.getElementById('easy-button').addEventListener('mouseout', hideTooltip);
+document.getElementById('easy-button').addEventListener('mouseout', () => hideTooltip());
 document.getElementById('medium-button').addEventListener('mouseover', () => showTooltip('Medium mode: 6-8 letters'));
-document.getElementById('medium-button').addEventListener('mouseout', hideTooltip);
+document.getElementById('medium-button').addEventListener('mouseout', () => hideTooltip());
 document.getElementById('hard-button').addEventListener('mouseover', () => showTooltip('Hard mode: 9-12 letters'));
-document.getElementById('hard-button').addEventListener('mouseout', hideTooltip);
+document.getElementById('hard-button').addEventListener('mouseout', () => hideTooltip());
 
 function showTooltip(text) {
     const tooltip = document.createElement('div');
