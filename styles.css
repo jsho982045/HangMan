@@ -1,8 +1,10 @@
 /* General Styles */
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
 
 body {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Rubik Scribble', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,10 +14,14 @@ body {
     flex-direction: column;
 }
 
-
-
 .container {
     text-align: center;
+}
+
+#title-container {
+    position: relative;
+    display: inline-block;
+    font-size: 4rem;
 }
 
 /* Gameplay Animation Styles */
@@ -95,10 +101,13 @@ body {
     display: inline-block;
     width: 1em;
     text-align: center;
+    color: black;
+    
 }
 
 #letters {
     margin-bottom: 20px;
+    color: black;
 }
 
 #message {
@@ -239,7 +248,7 @@ button[disabled] {
 }
 
 #play-now {
-    margin-top: 170px; /* Adjust to position below the animation */
+    margin-top: 170px; 
     padding: 10px 20px;
     font-size: 18px;
     background-color: #ddd;
@@ -247,6 +256,7 @@ button[disabled] {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    margin-left: 215px;;
 }
 
 #play-now:hover {
@@ -264,14 +274,14 @@ button[disabled] {
     height: 40px;
     border-radius: 50%;
     top: 0;
-    left: 30px;
+    left: 20px;
 }
 
 .home-hangman-part.body {
     width: 10px;
     height: 60px;
     top: 40px;
-    left: 45px;
+    left: 35px;
 }
 
 .home-hangman-part.left-arm,
@@ -279,7 +289,7 @@ button[disabled] {
     width: 10px;
     height: 40px;
     top: 40px;
-    left: 45px;
+    left: 35px;
 }
 
 .home-hangman-part.left-arm {
@@ -297,7 +307,7 @@ button[disabled] {
     width: 10px;
     height: 40px;
     top: 100px;
-    left: 45px;
+    left: 35px;
 }
 
 .home-hangman-part.left-leg {
@@ -315,6 +325,6 @@ button[disabled] {
     display: inline-block;
     height: 100px;
     width: 60px;
-    top: 10px;
-    left: -40px;    
+    top: 1.2rem;
+    left: -30px;    
 }

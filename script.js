@@ -85,6 +85,9 @@
             const span = document.createElement("span");
             span.textContent = guessedLetters.includes(letter) ? letter : "_";
             span.classList.add("letter");
+            if (guessedLetters.includes(letter)) {
+                span.classList.color = "black";
+            }
             wordContainer.appendChild(span);
         });
     }
