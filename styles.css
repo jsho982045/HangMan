@@ -336,3 +336,19 @@ button[disabled] {
     top: 1.2rem;
     left: -30px;    
 }
+
+
+#refresh-game {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #FFA500; /* Orange color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#refresh-game:hover {
+    background-color: #FF8C00; /* Darker orange */
+}
