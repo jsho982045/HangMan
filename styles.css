@@ -119,12 +119,14 @@ body {
 button {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #ddd;
+    background-color: #e1b5a0dc;
     color: black;
-    border: none;
+    border: 2px solid #C70039;
     cursor: pointer;
     border-radius: 5px;
     margin: 2px; 
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
@@ -249,19 +251,23 @@ button[disabled] {
 }
 
 #play-now {
-    margin-top: 170px; 
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #ddd;
-    color: black;
-    border: none;
+    margin-top: 110px; 
+    margin-left: 185px;
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #725c40; /* A vibrant color */
+    color: white;
+    border: 2px solid #C70039; /* A contrasting border */
+    border-radius: 10px;
     cursor: pointer;
-    border-radius: 5px;
-    margin-left: 215px;;
+    font-family: 'Rubik Scribble', cursive;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
 #play-now:hover {
-    background-color: #ccc;
+    background-color: #f0b55d;
+    transform: scale(1.1);
 }
 
 .home-hangman-part {
