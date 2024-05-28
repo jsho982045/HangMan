@@ -13,80 +13,9 @@ body {
 }
 
 
-#title{
-    font-size: 8em;
-    margin-bottom: 20px;
-
-}
 
 .container {
     text-align: center;
-}
-
-/* Homepage Animation Styles */
-#home-animation-container {
-    position: absolute;
-    top: 262px;
-    left: 0%;
-    transform: translateX(-50%);
-    display: none;
-}
-
-.home-hangman-part {
-    display: none;
-    position: absolute;
-    background-color: #000;
-}
-
-.home-hangman-part.head {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    top: 10px;
-    left: 30px;
-}
-
-.home-hangman-part.body {
-    width: 6px;
-    height: 37px;
-    top: 30px;
-    left: 37px;
-}
-
-.home-hangman-part.left-arm,
-.home-hangman-part.right-arm {
-    width: 7px;
-    height: 30px;
-    top: 30px;
-    left: 35px;
-}
-
-.home-hangman-part.left-arm {
-    transform: rotate(-45deg);
-    transform-origin: right bottom;
-}
-
-.home-hangman-part.right-arm {
-    transform: rotate(45deg);
-    transform-origin: left bottom;
-}
-
-.home-hangman-part.left-leg,
-.home-hangman-part.right-leg {
-    width: 7px;
-    height: 30px;
-    top: 60px;
-    left: 35px;
-}
-
-.home-hangman-part.left-leg {
-    transform: rotate(45deg);
-    transform-origin: left top;
-}
-
-.home-hangman-part.right-leg {
-    transform: rotate(-45deg);
-    transform-origin: right top;
 }
 
 /* Gameplay Animation Styles */
@@ -293,7 +222,7 @@ button[disabled] {
     color: #4CAF50;
 }
 
-.popup p{
+.popup p {
     margin: 10px 0 0;
     font-size: 1.2em;
 }
@@ -309,7 +238,6 @@ button[disabled] {
     white-space: nowrap;
 }
 
-
 #play-now {
     margin-top: 170px; /* Adjust to position below the animation */
     padding: 10px 20px;
@@ -323,4 +251,70 @@ button[disabled] {
 
 #play-now:hover {
     background-color: #ccc;
+}
+
+.home-hangman-part {
+    display: none;
+    position: absolute;
+    background-color: #000;
+}
+
+.home-hangman-part.head {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 0;
+    left: 30px;
+}
+
+.home-hangman-part.body {
+    width: 10px;
+    height: 60px;
+    top: 40px;
+    left: 45px;
+}
+
+.home-hangman-part.left-arm,
+.home-hangman-part.right-arm {
+    width: 10px;
+    height: 40px;
+    top: 40px;
+    left: 45px;
+}
+
+.home-hangman-part.left-arm {
+    transform: rotate(-45deg);
+    transform-origin: right bottom;
+}
+
+.home-hangman-part.right-arm {
+    transform: rotate(45deg);
+    transform-origin: left bottom;
+}
+
+.home-hangman-part.left-leg,
+.home-hangman-part.right-leg {
+    width: 10px;
+    height: 40px;
+    top: 100px;
+    left: 45px;
+}
+
+.home-hangman-part.left-leg {
+    transform: rotate(45deg);
+    transform-origin: left top;
+}
+
+.home-hangman-part.right-leg {
+    transform: rotate(-45deg);
+    transform-origin: right top;
+}
+
+#hangman-g {
+    position: relative;
+    display: inline-block;
+    height: 100px;
+    width: 60px;
+    top: 10px;
+    left: -40px;    
 }
