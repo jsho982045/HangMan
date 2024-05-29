@@ -72,7 +72,10 @@ async function startGame() {
     document.getElementById("congratulations-popup").style.display = "none"; // Hide popup
     document.getElementById("refresh-game-container").style.display = "none"; // Hide refresh button
 
-    document.querySelectorAll(".game-hangman-part").forEach(part => part.style.display = "none");
+    document.querySelectorAll(".game-hangman-part").forEach(part => {
+        part.style.display = "none";
+        part.classList.remove("game-over");
+    });
 
     displayWord();
     displayLetters();
@@ -158,6 +161,10 @@ function checkGameStatus() {
         document.getElementById("message").textContent = `Game Over! The word was: ${selectedWord}`;
         document.getElementById("play-again-container").style.display = "block";
         disableKeyboard();
+
+        document.querySelectorAll(".game-hangman-part").forEach(part => {
+            part.classList.add("game-over");
+        });
     } else if (selectedWord.split("").every(letter => guessedLetters.includes(letter))) {
         document.getElementById("message").textContent = "Congratulations! You've guessed the word!";
         document.getElementById("play-again-container").style.display = "block";
@@ -193,6 +200,7 @@ function showConfetti() {
 function showCongratulationsPopup() {
     const popup = document.getElementById("congratulations-popup");
     popup.style.display = "block";
+    popup.style.animation = "verticalMove 1s infinite";
 }
 
 function capitalizeFirstLetter(string) {

@@ -32,6 +32,47 @@ body {
     margin: 20px auto;
 }
 
+.pole {
+    position: absolute;
+    height: 200px;
+    width: 10px;
+    background-color: #7a5d62;
+    left: 135px;
+    top: 0;
+}
+
+
+
+.top-bar {
+    position: absolute;
+    height: 10px;
+    width: 100px;
+    background-color: #7a5d62;
+    top: 0;
+    left: -90px;
+}
+
+.bottom-bar {
+    position: absolute;
+    background-color: #7a5d62;
+    height: 5px;
+    width: 75px;
+    top: 200px;
+    left: -33px;
+    
+}
+
+.rope {
+    position: absolute;
+    height: 50px;
+    width: 5px;
+    background-color: #7a5d62;
+    top: 0;
+    left: -95px;
+
+}
+
+
 .game-hangman-part {
     display: none;
     position: absolute;
@@ -42,51 +83,55 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    top: 10px;
-    left: 30px;
+    top: 30px;
+    left: 25px;
 }
 
 .game-hangman-part.body {
     width: 10px;
-    height: 80px;
-    top: 50px;
-    left: 45px;
+    height: 83px;
+    top: 45px;
+    left: 40px;
 }
 
 .game-hangman-part.left-arm,
 .game-hangman-part.right-arm {
     width: 10px;
     height: 50px;
-    top: 50px;
-    left: 45px;
+    top: 45px;
+    
 }
 
 .game-hangman-part.left-arm {
     transform: rotate(-45deg);
     transform-origin: right bottom;
+    left: 35px;
 }
 
 .game-hangman-part.right-arm {
     transform: rotate(45deg);
     transform-origin: left bottom;
+    left: 45px;
 }
 
 .game-hangman-part.left-leg,
 .game-hangman-part.right-leg {
     width: 10px;
     height: 50px;
-    top: 120px;
-    left: 45px;
+    top: 123px;
+    
 }
 
 .game-hangman-part.left-leg {
     transform: rotate(45deg);
     transform-origin: left top;
+    left: 37px;
 }
 
 .game-hangman-part.right-leg {
     transform: rotate(-45deg);
     transform-origin: right top;
+    left: 45px;
 }
 
 #word {
@@ -351,4 +396,44 @@ button[disabled] {
 
 #refresh-game:hover {
     background-color: #FF8C00; /* Darker orange */
+}
+
+/* Keyframes for the vertical animation */
+@keyframes verticalMove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* Apply the animation to the congratulatory popup */
+#congratulations-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+    animation: verticalMove 2s infinite;
+}
+
+#congratulations-popup h2 {
+    margin: 0;
+    font-size: 2em;
+    color: #4CAF50;
+}
+
+#congratulations-popup p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
+
+
+.game-over {
+    background-color: red;
 }
