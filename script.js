@@ -158,10 +158,16 @@ function showGameHangmanPart() {
 
 function checkGameStatus() {
     if (attempts === maxAttempts) {
-        document.getElementById("message").textContent = `Game Over! The word was: ${selectedWord}`;
-        document.getElementById("play-again-container").style.display = "block";
+        const gameOverPopup = document.getElementById("game-over-popup");
+        const gameOverMessage = document.getElementById("game-over-message");
+
+        // Create a span element to wrap the correct word
+        const correctWordSpan = `<span class="correct-word">${selectedWord}</span>`;
+        gameOverMessage.innerHTML = `Game Over! The word was: ${correctWordSpan}`;
+        gameOverPopup.style.display = "block";
         disableKeyboard();
 
+        // Add the game-over class to all hangman parts
         document.querySelectorAll(".game-hangman-part").forEach(part => {
             part.classList.add("game-over");
         });
@@ -172,6 +178,17 @@ function checkGameStatus() {
         showCongratulationsPopup();
         disableKeyboard();
     }
+}
+
+function playAgain() {
+    document.getElementById("game-over-popup").style.display = "none";
+    startGame();
+}
+
+function switchModes() {
+    document.getElementById("game-over-popup").style.display = "none";
+    document.getElementById("game-container").style.display = "none";
+    document.getElementById("mode-selection").style.display = "block";
 }
 
 function enableKeyboard() {
