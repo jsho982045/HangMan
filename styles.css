@@ -301,14 +301,14 @@ button[disabled] {
     margin-left: 185px;
     padding: 15px 30px;
     font-size: 24px;
-    background-color: #725c40; /* A vibrant color */
+    background-color: #725c40; 
     color: white;
-    border: 2px solid #C70039; /* A contrasting border */
+    border: 2px solid #C70039; 
     border-radius: 10px;
     cursor: pointer;
     font-family: 'Rubik Scribble', cursive;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 #play-now:hover {
@@ -398,14 +398,14 @@ button[disabled] {
     background-color: #FF8C00; 
 }
 
-/* Keyframes for the vertical animation */
+
 @keyframes verticalMove {
     0% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0); }
 }
 
-/* Apply the animation to the congratulatory popup */
+
 #congratulations-popup {
     display: none;
     position: fixed;

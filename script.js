@@ -72,8 +72,8 @@ async function startGame() {
 
     document.getElementById("message").textContent = "";
     document.getElementById("play-again-container").style.display = "none";
-    document.getElementById("congratulations-popup").style.display = "none"; // Hide popup
-    document.getElementById("refresh-game-container").style.display = "none"; // Hide refresh button
+    document.getElementById("congratulations-popup").style.display = "none"; 
+    document.getElementById("refresh-game-container").style.display = "none"; 
 
     document.querySelectorAll(".game-hangman-part").forEach(part => {
         part.style.display = "none";
@@ -84,7 +84,7 @@ async function startGame() {
     displayLetters();
     displayStrikes();
     enableKeyboard();
-    startTimer(); // Start the timer
+    startTimer(); 
 }
 
 function startTimer() {
@@ -93,13 +93,13 @@ function startTimer() {
 
     switch (difficulty) {
         case 'easy':
-            timeLeft = 60;
+            timeLeft = 15;
             break;
         case 'medium':
             timeLeft = 30;
             break;
         case 'hard':
-            timeLeft = 10;
+            timeLeft = 45;
             break;
     }
 
@@ -122,7 +122,7 @@ function handleTimeout() {
     showGameHangmanPart();
     checkGameStatus();
     if (attempts < maxAttempts) {
-        startTimer(); // Restart the timer if the game is not over
+        startTimer(); 
     }
 }
 
@@ -172,20 +172,20 @@ function displayStrikes() {
 }
 
 function guessLetter(letter) {
-    if (guessedLetters.includes(letter)) return; // Prevent multiple guesses of the same letter
+    if (guessedLetters.includes(letter)) return; 
     guessedLetters.push(letter);
     const letterButton = document.querySelector(`button[data-key="${letter}"]`);
     if (!selectedWord.includes(letter)) {
         attempts++;
         letterButton.classList.add("incorrect");
-        incorrectSound.currentTime = 0; // Reset the sound to the beginning
-        incorrectSound.play(); // Play incorrect sound
-        showGameHangmanPart(); // Show part of the hangman
+        incorrectSound.currentTime = 0; 
+        incorrectSound.play(); 
+        showGameHangmanPart(); 
         displayStrikes();
     } else {
         letterButton.classList.add("correct");
-        correctSound.currentTime = 0; // Reset the sound to the beginning
-        correctSound.play(); // Play correct sound
+        correctSound.currentTime = 0; 
+        correctSound.play(); 
     }
     letterButton.disabled = true;
     displayWord();
@@ -206,13 +206,13 @@ function checkGameStatus() {
         const gameOverPopup = document.getElementById("game-over-popup");
         const gameOverMessage = document.getElementById("game-over-message");
 
-        // Create a span element to wrap the correct word
+        
         const correctWordSpan = `<span class="correct-word">${selectedWord}</span>`;
         gameOverMessage.innerHTML = `Game Over! The word was: ${correctWordSpan}`;
         gameOverPopup.style.display = "block";
         disableKeyboard();
 
-        // Add the game-over class to all hangman parts
+        
         document.querySelectorAll(".game-hangman-part").forEach(part => {
             part.classList.add("game-over");
         });
@@ -287,12 +287,12 @@ window.onload = () => {
     document.getElementById("game-container").style.display = "none";
 };
 
-// Title Animation and Navigation to Mode Selection
+
 document.addEventListener("DOMContentLoaded", () => {
     const titleElement = document.getElementById("title");
     const playNowButton = document.getElementById("play-now");
 
-    // Function to animate the drawing of the title
+    
     function animateTitle() {
         let text = "Hangman";
         let index = 0;
@@ -303,14 +303,14 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 clearInterval(interval);
                 setTimeout(() => {
-                    // Show hangman animation
+                   
                     transformGToHangman();
                 }, 500);
             }
         }, 500);
     }
 
-    // Function to transform 'g' into hangman
+    
     function transformGToHangman() {
         let titleText = titleElement.textContent;
         titleElement.innerHTML = "";
@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }
 
-    // Function to animate the hangman on the home page
+    
     function animateHomeHangman() {
         const parts = document.querySelectorAll("#hangman-g .home-hangman-part");
         let index = 0;
@@ -367,7 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
     animateTitle();
 });
 
-// Tooltip for Difficulty Buttons
 document.getElementById('easy-button').addEventListener('mouseover', () => showTooltip('Easy mode: 3-5 letters'));
 document.getElementById('easy-button').addEventListener('mouseout', hideTooltip);
 document.getElementById('medium-button').addEventListener('mouseover', () => showTooltip('Medium mode: 6-8 letters'));
