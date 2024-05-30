@@ -474,3 +474,14 @@ button[disabled] {
     color: green;
     font-weight: bold;
 }
+
+#timer-container {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 10px;
+    text-align: center;
+}
+
+#timer {
+    color: red;
+}

@@ -10,8 +10,10 @@ const incorrectSound = new Audio('tuba-sting-wrong-answer-fernweh-goldfish-1-00-
 let selectedWord;
 let attempts;
 let guessedLetters;
-const maxAttempts = 6; // Keeping max attempts constant
+const maxAttempts = 6; 
 let difficulty = 'easy';
+let timerInterval;
+let timeLeft;
 
 const jsConfetti = new JSConfetti();
 
@@ -56,6 +58,7 @@ function setDifficulty(level) {
     startGame();
 }
 
+
 async function startGame() {
     selectedWord = await fetchRandomWord();
     if (!selectedWord) {
@@ -81,6 +84,46 @@ async function startGame() {
     displayLetters();
     displayStrikes();
     enableKeyboard();
+    startTimer(); // Start the timer
+}
+
+function startTimer() {
+    clearInterval(timerInterval);
+    document.getElementById("timer-container").style.display = "block";
+
+    switch (difficulty) {
+        case 'easy':
+            timeLeft = 60;
+            break;
+        case 'medium':
+            timeLeft = 30;
+            break;
+        case 'hard':
+            timeLeft = 10;
+            break;
+    }
+
+    document.getElementById("timer").textContent = timeLeft;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            handleTimeout();
+        }
+    }, 1000);
+}
+
+function handleTimeout() {
+    attempts++;
+    displayStrikes();
+    showGameHangmanPart();
+    checkGameStatus();
+    if (attempts < maxAttempts) {
+        startTimer(); // Restart the timer if the game is not over
+    }
 }
 
 function displayWord() {
@@ -147,6 +190,8 @@ function guessLetter(letter) {
     letterButton.disabled = true;
     displayWord();
     checkGameStatus();
+    clearInterval(timerInterval);
+    startTimer();
 }
 
 function showGameHangmanPart() {
