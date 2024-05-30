@@ -386,7 +386,7 @@ button[disabled] {
 #refresh-game {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #FFA500; /* Orange color */
+    background-color: #FFA500; 
     color: white;
     border: none;
     cursor: pointer;
@@ -395,7 +395,7 @@ button[disabled] {
 }
 
 #refresh-game:hover {
-    background-color: #FF8C00; /* Darker orange */
+    background-color: #FF8C00; 
 }
 
 /* Keyframes for the vertical animation */
@@ -451,8 +451,8 @@ button[disabled] {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     z-index: 1000;
-    font-size: 1.5em; /* Increase the font size */
-    font-family: 'Patrick Hand', cursive; /* Match the game theme */
+    font-size: 1.5em; 
+    font-family: 'Patrick Hand', cursive; 
 }
 
 #game-over-popup button {

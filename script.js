@@ -229,8 +229,7 @@ document.getElementById("play-again").addEventListener("click", () => {
 });
 
 document.getElementById("switch-mode").addEventListener("click", () => {
-    document.getElementById("game-container").style.display = "none";
-    document.getElementById("mode-selection").style.display = "block";
+    switchModes();
 });
 
 document.getElementById("refresh-game").addEventListener("click", () => {
